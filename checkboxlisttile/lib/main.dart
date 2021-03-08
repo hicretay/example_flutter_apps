@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -37,43 +38,46 @@ class _MyAppState extends State {
           centerTitle: true,
           title: Text("Programlama Dilleri"),
         ),
-        body: Column(
-          children: [
-            SizedBox(height: 15),
-            Text(
-              "Bildiğiniz programlama dillerini seçiniz: ",
-              style: TextStyle(fontSize: 18),
-            ),
-            Divider(
-              thickness: 2,
-            ),
-            Flexible(
-              child: Card(
-                child: ListView(
-                  children: language.keys.map((String key) {
-                    return CheckboxListTile(
-                        title: Text(key),
-                        activeColor: Colors.amber,
-                        controlAffinity: ListTileControlAffinity.leading,
-                        value: language[key],
-                        onChanged: (bool value) {
-                          setState(() {
-                            language[key] = value;
-                            if (value == true) {
-                              checkedItems.add(key);
-                            } else if (value == false) {
-                              checkedItems.remove(key);
-                            }
+        body: Container(
+          child: Column(
+            children: [
+              SizedBox(height: 15),
+              Text(
+                "Bildiğiniz programlama dillerini seçiniz: ",
+                style: TextStyle(fontSize: 18),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              Flexible(
+                child: Card(
+                  elevation: 3,
+                  child: ListView(
+                    children: language.keys.map((String key) {
+                      return CheckboxListTile(
+                          title: Text(key),
+                          activeColor: Colors.amber,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: language[key],
+                          onChanged: (bool value) {
+                            setState(() {
+                              language[key] = value;
+                              if (value == true) {
+                                checkedItems.add(key);
+                              } else if (value == false) {
+                                checkedItems.remove(key);
+                              }
+                            });
                           });
-                        });
-                  }).toList(),
+                    }).toList(),
+                  ),
                 ),
               ),
-            ),
-            Flexible(
-              child: buildListView(),
-            )
-          ],
+              Flexible(
+                child: buildListView(),
+              )
+            ],
+          ),
         ),
       ),
     );
