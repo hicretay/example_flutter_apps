@@ -12,10 +12,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String name = "Unknown";
   WifiInfo _wifiInfo = new WifiInfo();
+
   Future<void> getName() async {
-    var aa = await _wifiInfo.getWifiName();
+    var data = await _wifiInfo.getWifiName();
     setState(() {
-      name = aa.toString();
+      name = data.toString();
     });
   }
 
