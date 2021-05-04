@@ -39,6 +39,10 @@ class _MyAppState extends State<MyApp> {
         convertToCoordinates(coordinates).then((value) => _address = value);
         //convertToCoordinates ile koordinatların adrese dönüşmesi
         //----------------------------------------------------------------
+        print("Ülke adi: " + _address.countryName);
+        print("İl adi: " + _address.adminArea);
+        print("Mahalle adi: " + _address.subLocality);
+        print("Cadde adi: " + _address.thoroughfare);
       });
     });
   }
@@ -55,6 +59,17 @@ class _MyAppState extends State<MyApp> {
             Text(
                 "Enlem : ${_position?.latitude ?? ''}, Boylam : ${_position?.longitude ?? ''}"),
             Text("Adres : ${_address?.addressLine ?? ''}"),
+            Text("Mahalle adi: " +
+                _address.subLocality +
+                '\n' +
+                "Cadde adi: " +
+                _address.thoroughfare +
+                '\n' +
+                "İl adi: " +
+                _address.adminArea +
+                '\n' +
+                "Ülke adi: " +
+                _address.countryName),
             //------------------------------------------------------------------------------
           ],
         ),
